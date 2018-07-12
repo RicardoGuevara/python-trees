@@ -8,6 +8,7 @@ import time
 #TDA para cada nodo raiz dentro del arbol binario
 class Arbin(object):
     
+    descendence = False
     content = object()
 
     def __init__(self,content_in):
@@ -21,8 +22,18 @@ class Arbin(object):
         else:
             self.root_arbin.lft_arbin = self
 
+    def voidArbin(self):
+        if self.:
+            pass
+
+    def calcPeso(self):
+        if self.voidArbin():
+            return 0
+        else:
+            return 1+self.lft_arbin.calcPeso()+self.rgt_arbin.calcPeso()
+
 class Aplication:
-    
+
     def __init__(self):
         self.root_window = Tk()
 
