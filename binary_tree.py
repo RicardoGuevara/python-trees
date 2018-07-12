@@ -42,8 +42,8 @@ class Aplication:
     def __init__(self):
         self.root_window = Tk()
     
-    def addLabel(self,label_text):
-        lab=Label(self.root_window, text=label_text, anchor=CENTER, height="20",width="100")
+    def addLabel(self,label_text,he_in=20,wd_in=100,bcg="white"):
+        lab=Label(self.root_window, text=label_text, anchor=CENTER, height=he_in,width=wd_in,bg=bcg)
         lab.pack()
 
     def generate(self):
@@ -52,7 +52,7 @@ class Aplication:
     def startpage(self):
         self.root_window.title("Binary tree / Ricardo Guevara")
         self.root_window.geometry("500x500")
-        self.addLabel("holii")
+        self.addLabel("BINARY TREES",he_in=10,wd_in=50,bcg="blue")
         self.generate()
 
 
