@@ -17,14 +17,14 @@ class Arbin(object):
 
     def definePos(self,root_in,orientation):
         self.root_arbin = root_in
+        self.root_arbin.descendence = True
         if orientation:
             self.root_arbin.rgt_arbin = self
         else:
             self.root_arbin.lft_arbin = self
 
     def voidArbin(self):
-        if self.:
-            pass
+        return not self.descendence
 
     def calcPeso(self):
         if self.voidArbin():
@@ -32,19 +32,36 @@ class Arbin(object):
         else:
             return 1+self.lft_arbin.calcPeso()+self.rgt_arbin.calcPeso()
 
+    def contains(self,elem):
+        pass
+
+
 class Aplication:
+    'generate GUI'
 
     def __init__(self):
         self.root_window = Tk()
+    
+    def addLabel(self,label_text):
+        lab=Label(self.root_window, text=label_text, anchor=CENTER, height="20",width="100")
+        lab.pack()
 
     def generate(self):
         self.root_window.mainloop()
+    
+    def startpage(self):
+        self.root_window.title("Binary tree / Ricardo Guevara")
+        self.root_window.geometry("500x500")
+        self.addLabel("holii")
+        self.generate()
 
+
+    
 #Genera la interfaz de usuario
 def gui_loader():
     logging.debug("hilo de vtn lanzado")
-    root_window = Aplication()
-    root_window.generate()
+    root_wd = Aplication()
+    root_wd.startpage()
 
 #Establece un hilo paralelo para la ejecución de la interfaz de usuario
 try:
