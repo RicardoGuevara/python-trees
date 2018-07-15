@@ -1,5 +1,5 @@
 # Ricardo G. Payán // Árboles binarios
-
+#Arboles binarios / Rick
 from threading import Thread
 from tkinter import *
 import logging
