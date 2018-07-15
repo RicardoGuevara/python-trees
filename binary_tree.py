@@ -5,6 +5,10 @@ from tkinter import *
 import logging
 import time
 
+#just to debug something ( -_-)
+def debugSomething():
+    	print("it founds well ( -_-)")
+
 #TDA para cada nodo raiz dentro del arbol binario
 class Arbin(object):
     
@@ -33,7 +37,15 @@ class Arbin(object):
             return 1+self.lft_arbin.calcPeso()+self.rgt_arbin.calcPeso()
 
     def contains(self,elem):
-        pass
+        if self.voidArbin():
+        	return False
+        elif elem == self.content:
+        	return True
+        else:
+        	return self.lft_arbin.contains(elem) or self.rgt_arbin.contains(elem)
+
+    def numHojas(self):
+    	pass
 
 
 class Aplication:
@@ -42,19 +54,21 @@ class Aplication:
     def __init__(self):
         self.root_window = Tk()
     
-    def addLabel(self,label_text,he_in=20,wd_in=100,bcg="white"):
-        lab=Label(self.root_window, text=label_text, anchor=CENTER, height=he_in,width=wd_in,bg=bcg)
-        lab.pack()
+    def addLabel(self,label_text,anchor_in=CENTER,he_in=20,wd_in=100,bcg="white"):
+        Label(self.root_window, text=label_text, anchor=anchor_in, height=he_in,width=wd_in,bg=bcg).pack()
+
+    def addButton(self,function=debugSomething,label_text="ACTION",anchor_in=CENTER,he_in=20,wd_in=100,bcg="white"):
+    	Button(self.root_window, command=function, text=label_text, anchor=anchor_in, height=he_in,width=wd_in,bg=bcg).pack()
 
     def generate(self):
         self.root_window.mainloop()
+        self.root_window.destroy()
     
     def startpage(self):
         self.root_window.title("Binary tree / Ricardo Guevara")
         self.root_window.geometry("500x500")
-        self.addLabel("BINARY TREES",he_in=10,wd_in=50,bcg="blue")
-        self.generate()
-
+        self.addLabel("BINARY TREES",he_in=2,wd_in=15)
+        self.addButton(wd_in=20,he_in=5)
 
     
 #Genera la interfaz de usuario
@@ -62,6 +76,7 @@ def gui_loader():
     logging.debug("hilo de vtn lanzado")
     root_wd = Aplication()
     root_wd.startpage()
+    root_wd.generate()
 
 #Establece un hilo paralelo para la ejecución de la interfaz de usuario
 try:
