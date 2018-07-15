@@ -60,6 +60,9 @@ class Aplication:
     def addButton(self,function=debugSomething,label_text="ACTION",anchor_in=CENTER,he_in=20,wd_in=100,bcg="white"):
     	Button(self.root_window, command=function, text=label_text, anchor=anchor_in, height=he_in,width=wd_in,bg=bcg).pack()
 
+    def addEntry(self):
+    	Entry(self.root_window).pack()
+
     def generate(self):
         self.root_window.mainloop()
         self.root_window.destroy()
@@ -69,7 +72,7 @@ class Aplication:
         self.root_window.geometry("500x500")
         self.addLabel("BINARY TREES",he_in=2,wd_in=15)
         self.addButton(wd_in=20,he_in=5)
-
+        self.addButton(wd_in=50,he_in=5,label_text="Generar una entrada de texto",function=self.addEntry)
     
 #Genera la interfaz de usuario
 def gui_loader():
