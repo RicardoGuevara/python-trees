@@ -11,7 +11,7 @@ def debugSomething():
 
 #TDA para cada nodo raiz dentro del arbol binario
 class Arbin(object):
-    
+    'Nodo raíz de un arbol'
     descendence = False
     content = object()
 
@@ -45,8 +45,29 @@ class Arbin(object):
         	return self.lft_arbin.contains(elem) or self.rgt_arbin.contains(elem)
 
     def numHojas(self):
-    	pass
+    	if self.voidArbin():
+    		return 0
+    	elif self.rgt_arbin.voidArbin() and self.lft_arbin.voidArbin():
+    		return 1
+    	else:
+    		return self.rgt_arbin.numHojas() + self.lft_arbin.numHojas()
 
+    def howMany(self,elem):
+    	if self.voidArbin():
+    		return 0
+    	elif elem == self.content:
+    		return 1  + self.lft_arbin.howMany(elem) + self.rgt_arbin.howMany(elem)
+    	else:
+    		return self.lft_arbin.howMany(elem) + self.rgt_arbin.howMany(elem)
+
+    def wayExistBethween(self,elemA,elemB):
+    	if self.voidArbin():
+    		return False
+    	elif elemA == self.content:
+    		return self.contains(elemB)
+    	else:
+    		return self.lft_arbin.wayExistBethween(elemA,elemB) or self.rgt_arbin.wayExistBethween(elemA,elemB)
+    	
 
 class Aplication:
     'generate GUI'
@@ -70,7 +91,7 @@ class Aplication:
     def startpage(self):
         self.root_window.title("Binary tree / Ricardo Guevara")
         self.root_window.geometry("500x500")
-        self.addLabel("BINARY TREES",he_in=2,wd_in=15)
+        self.addLabel("BINARY TREES",he_in=2,wd_in=100)
         self.addButton(wd_in=20,he_in=5)
         self.addButton(wd_in=50,he_in=5,label_text="Generar una entrada de texto",function=self.addEntry)
     
@@ -89,3 +110,6 @@ except Exception:
     raise TypeError("i seriously want to die")
 finally:
     print("principal_thread_end")
+
+
+#FIN
